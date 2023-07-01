@@ -31,7 +31,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div>
+    <div className="fixed top-0 w-full z-50">
       {/* --------Nav Top ----------- */}
       <div className="bg-primary py-2 text-white">
         <div className="container mx-auto px-3 flex flex-col md:flex-row md:justify-between">
