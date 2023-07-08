@@ -7,7 +7,10 @@ const About = () => {
     <div className=" container mx-auto grid grid-cols-1 gap-4 items-center md:grid-cols-2 my-24">
       <img src="https://i.ibb.co/YjrFGvS/image.png" alt="doctor with patient" />
       <div>
-        <SectionHeader></SectionHeader>
+        <SectionHeader
+          subHeading={"HEALTH & CARE"}
+          heading={"The Best Medics, Doctors & Physicians for A Healing Touch"}
+        ></SectionHeader>
         <p className="font-medium text-gray-500 max-w-[650px] my-5">
           At Green Care Medical Center, we are dedicated to providing
           outstanding medical care in a warm and welcoming environment. Our
