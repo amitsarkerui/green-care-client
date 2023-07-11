@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import SectionHeader from "../../Components/SectionHeader";
+import "./style.css";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
   const [doctorsData, setDoctorsData] = useState([]);
   const [dept, setDept] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(null);
   //   console.log("8------>", dept);
   useEffect(() => {
     fetch("http://localhost:2020/doctors")
@@ -33,9 +35,11 @@ const Doctors = () => {
       (doctor) => doctor.specialty === category
     );
     setDoctorsData(filteredData);
+    setActiveCategory(category);
   };
   const handleCategoryAll = () => {
     setDoctorsData(doctors);
+    setActiveCategory(null);
   };
   return (
     <div className="container mx-auto">
@@ -46,33 +50,27 @@ const Doctors = () => {
         }
       ></SectionHeader>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-5 my-10">
-        <div className="border-r border-gray-200 dark:border-gray-700 col-span-1">
+        <div className="border-r border-gray-200 dark:border-gray-700 col-span-1 relative">
           <nav
-            className="flex flex-col space-y-2"
+            className="flex flex-col space-y-2 mr-5 sticky top-36"
             aria-label="Tabs"
             role="tablist"
             data-hs-tabs-vertical="true"
           >
             <button
               onClick={handleCategoryAll}
-              type="button"
-              className="hs-tab-active:border-blue-500 hs-tab-active:text-blue-600 dark:hs-tab-active:text-blue-600 py-1 pr-4 inline-flex items-center gap-2 border-r-[3px] border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 active"
-              id="vertical-tab-with-border-item-1"
-              data-hs-tab="#vertical-tab-with-border-1"
-              aria-controls="vertical-tab-with-border-1"
-              role="tab"
+              className={`btn btn-sm ${
+                activeCategory === null ? "active" : ""
+              }`}
             >
               All
             </button>
             {dept.map((sd) => (
               <button
                 onClick={() => handleCategory(sd)}
-                type="button"
-                className="hs-tab-active:border-blue-500 hs-tab-active:text-blue-600 dark:hs-tab-active:text-blue-600 py-1 pr-4 inline-flex items-center gap-2 border-r-[3px] border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 active"
-                id="vertical-tab-with-border-item-1"
-                data-hs-tab="#vertical-tab-with-border-1"
-                aria-controls="vertical-tab-with-border-1"
-                role="tab"
+                className={`btn btn-sm ${
+                  activeCategory === sd ? "active" : ""
+                }`}
               >
                 {sd}
               </button>
