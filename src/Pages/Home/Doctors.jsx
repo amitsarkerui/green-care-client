@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SectionHeader from "../../Components/SectionHeader";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
@@ -43,12 +44,16 @@ const Doctors = () => {
   };
   return (
     <div className="container mx-auto">
-      <SectionHeader
-        subHeading={"Find a doctors"}
-        heading={
-          "Expert doctors guiding your health journey with personalized care and expertise"
-        }
-      ></SectionHeader>
+      <div className="flex justify-between items-center">
+        <SectionHeader
+          subHeading={"Find a doctors"}
+          heading={
+            "Expert doctors guiding your health journey with care and expertise"
+          }
+        ></SectionHeader>
+        <Link className="btn btn-primary text-white">See ALL</Link>
+      </div>
+
       <div className="grid grid-cols-1 gap-5 md:grid-cols-5 my-10">
         <div className="border-r border-gray-200 dark:border-gray-700 col-span-1 relative">
           <nav
@@ -78,7 +83,7 @@ const Doctors = () => {
           </nav>
         </div>
         <div className="col-span-4 grid grid-cols-1 gap-7 md:grid-cols-3">
-          {doctorsData.map((doctor) => (
+          {doctorsData.slice(0, 6).map((doctor) => (
             <div
               className="bg-white flex flex-col border border-gray-100 shadow-sm  rounded-lg p-6 relative"
               key={doctor?._id}
