@@ -85,7 +85,7 @@ const Doctors = () => {
         <div className="col-span-4 grid grid-cols-1 gap-7 md:grid-cols-3">
           {doctorsData.slice(0, 6).map((doctor) => (
             <div
-              className="bg-white flex flex-col border border-gray-100 shadow-sm  rounded-lg p-6 relative"
+              className="bg-white flex flex-col border border-gray-100 shadow-sm  rounded-lg p-6 relative hover:border-primary hover:scale-105 hover:transition-all hover:duration-700"
               key={doctor?._id}
             >
               <div className="relative">

@@ -4,7 +4,7 @@ import bannerImage from "../../assets/images/banner-center-02.jpg";
 
 const AppointmentBanner = () => {
   return (
-    <div className="relative  flex items-center w-full my-24">
+    <div className="relative  flex items-center w-full mt-24">
       <div
         className="bg-[url('${bannerImage}')]  w-full bg-cover relative flex items-center"
         style={{
