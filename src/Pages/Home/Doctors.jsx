@@ -70,8 +70,9 @@ const Doctors = () => {
             >
               All
             </button>
-            {dept.map((sd) => (
+            {dept.map((sd, index) => (
               <button
+                key={index}
                 onClick={() => handleCategory(sd)}
                 className={`btn btn-sm ${
                   activeCategory === sd ? "active" : ""
@@ -85,7 +86,7 @@ const Doctors = () => {
         <div className="col-span-4 grid grid-cols-1 gap-7 md:grid-cols-3">
           {doctorsData.slice(0, 6).map((doctor) => (
             <div
-              className="bg-white flex flex-col border border-gray-100 shadow-sm  rounded-lg p-6 relative hover:border-primary hover:scale-105 hover:transition-all hover:duration-700"
+              className="bg-white flex flex-col border border-gray-100 shadow-sm  rounded-lg p-6 relative hover:border-primary hover:scale-105 hover:transition-all duration-700"
               key={doctor?._id}
             >
               <div className="relative">
@@ -101,7 +102,7 @@ const Doctors = () => {
 
               <h3 className="my-4 text-xl font-semiBold">{doctor?.name}</h3>
               <p className="text-gray-500">{doctor?.description}</p>
-              <div className="my-6">
+              {/* <div className="my-6">
                 {doctor?.availability?.map((sa, index) => (
                   <div
                     key={index}
@@ -111,11 +112,15 @@ const Doctors = () => {
                     <p className=" text-secondary text-sm">{sa?.time}</p>
                   </div>
                 ))}
-              </div>
+              </div> */}
               <div className="flex-grow"></div>
-              <button className="btn btn-outline mb-3">
+              <Link
+                className="btn btn-outline mb-3 mt-10"
+                to={`/pickSlot/${doctor?._id}`}
+              >
                 Book a Appointments
-              </button>
+              </Link>
+
               <button className="btn btn-primary text-white">
                 View Doctor Profile
               </button>
